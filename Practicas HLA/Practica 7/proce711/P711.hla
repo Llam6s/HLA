@@ -1,0 +1,46 @@
+//#*****************************************************************	//_P711	1 de 2
+
+//#	PARTE No P711.
+
+//#
+
+//#	Direccionamiento Inmediato
+
+//#*****************************************************************
+
+Program P711;
+
+#include("stdlib.hhf");
+
+begin P711;
+	
+//Direccionamiento INMEDIATO
+
+	stdout.put(nl,nl,"Direccionamiento INMEDIATO",nl);
+
+//Direccionamiento INMEDIATO a ocho bits
+
+	mov($40,al);
+
+	stdout.put(nl,"mov($40,al)");
+
+	stdout.put("	Valor de AL es: $",al,nl);
+
+//Direccionamiento INMEDIATO a diez y seis, bits
+
+mov($0040,ax);
+
+
+	stdout.put(nl,"mov($0040,ax)");			//_P711	1 de 2
+
+	stdout.put("	Valor de AX es: $",ax,nl);
+
+//Direccionamiento INMEDIATO a treinta y dos, bits
+
+	mov($00000040,eax);
+
+	stdout.put(nl,"mov($00000040,eax)");
+
+	stdout.put("	Valor de EAX es: $",eax,nl);
+
+end P711;

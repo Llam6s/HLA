@@ -1,0 +1,43 @@
+//#*****************************************************************	//_P511	1 de 2
+
+//#	EJERCICIO P511.
+
+//#
+
+//#	Ingresar datos hexadecimales. Sumar y restar, datos hexadecimales
+
+//#*****************************************************************
+
+Program P511;
+
+#include("stdlib.hhf");
+
+begin P511;
+
+	stdout.put("Suma A + B y Resta A - B", nl);
+	
+	stdout.put("Meter dato hexadecimal A entre 00 y FF: ");
+	
+	stdin.get(al);
+
+	stdout.put("Meter dato hexadecimal B entre 00 y FF: ");
+
+	stdin.get(bl);
+
+//Suma A + B
+
+	mov(al,cl);
+
+	add(bl,cl);
+
+	stdout.put(nl,"Valor A + B es: $",cl,nl);			//_P511 2 de 2
+
+//Resta A - B
+
+	mov(al,cl);
+
+	sub(bl,cl);
+
+	stdout.put(nl,"Valor A - B es: $",cl,nl);
+
+end P511;

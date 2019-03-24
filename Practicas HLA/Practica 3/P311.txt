@@ -1,0 +1,38 @@
+//#*****************************************************************	//_P311	1 de 2
+
+//#	EJERCICIO 311.
+
+//#
+
+//#	Ingresar variables, con valores previamente establecidos y no establecidos
+
+//#*****************************************************************
+
+Program P311;
+
+#include("stdlib.hhf");
+
+static
+
+	InitDemo:	int32:=40;
+	
+	NotInitialized:	int32;
+
+begin P311;
+
+//Visualiza la variable pre-inicializada:
+
+	stdout.put("InitDemo value is ",InitDemo,nl);
+
+//Pone un valor entero y lo visualiza:
+
+	stdout.put("Meter un valor entero: ");
+
+	stdin.get(NotInitialized);
+
+
+
+
+	stdout.put("Usted ingreso ", NotInitialized,nl);			//_P311 2 de 2
+
+end P311;

@@ -1,0 +1,212 @@
+//#*****************************************************************			//_P1011 1 de 7
+
+//#	PARTE No P1011.
+
+//#
+
+//#	Operaciones con enteros con el FPU
+
+//#*****************************************************************
+
+Program P1011;
+
+#include("stdlib.hhf");
+
+var
+
+	Dato1: int32;
+
+	Dato2: int32;
+
+	Dato3: int32;
+
+	Dato4: int32;
+
+begin P1011;
+
+//Operaciones con enteros.
+
+//Poner los datos:
+
+	stdout.put("Ingresar el valor entero Dato1: ");
+
+
+
+	stdin.get(Dato1);								//_P1011 2 de 7
+	
+	stdout.put(nl,"Ingresar el valor entero Dato2: ");
+
+	stdin.get(Dato2);
+
+	stdout.put(nl,"Ingresar el valor entero Dato3: ");
+
+	stdin.get(Dato3);
+
+//Suma: Dato1 Dato2 +
+
+//	Pila:
+
+// +___________+
+
+// |   Dato2   |  st0
+
+// +___________+
+
+// |   Dato1   |  st1
+
+// +___________+
+
+	fild(Dato1);
+
+	fild(Dato2);
+
+	fadd();
+
+	fist(Dato4);
+
+stdout.put(nl,"El resultado (Dato1+Dato2=Dato1Dato2+)es: ",Dato4,nl);				//_P1011 3 de 7
+
+//Resta: Dato1 Dato2-
+
+
+//	Pila:
+
+// +___________+
+
+// |   Dato2   |  st0
+
+// +___________+
+
+// |   Dato1   |  st1
+
+// +___________+
+
+    fild(Dato1);
+
+    fild(Dato2);
+
+    fsub();
+
+    fist(Dato4);
+
+    stdout.put(nl,"El resultado (Dato1-Dato2=Dato1 Dato2-)es: ",Dato4,nl);
+
+//Multiplicacion: Dato1 Dato2 *
+
+
+//	Pila:
+
+// +___________+
+
+// |   Dato2   |  st0										//_P1011 4 de 7
+
+// +___________+
+
+// |   Dato1   |  st1
+
+// +___________+
+
+    fild(Dato1);
+
+    fild(Dato2);
+
+    fmul();
+
+    fist(Dato4);
+
+    stdout.put(nl,"El resultado (Dato1*Dato2=Dato1 Dato2-)es: ",Dato4,nl);
+
+//Division: Dato1 Dato2/
+
+//	Pila:
+
+// +___________+
+
+// |   Dato2   |  st0
+
+// +___________+
+
+// |   Dato1   |  st1
+
+// +___________+
+
+
+    fild(Dato1);										//_P1011 5 de 7
+
+    fild(Dato2);
+
+    fdiv();
+
+    fist(Dato4);
+
+    stdout.put(nl,"El resultado (Dato1/Dato2=Dato1 Dato2/)es: ",Dato4,nl);
+
+//Operaciones con tres datos Dato1+Dato2-Dato3
+
+//	Pila:
+
+// +___________+
+
+// |   Dato3   |  st0
+
+// +___________+
+
+// |   Dato2   |  st1
+
+// +___________+
+
+// |   Dato1   |  st2
+
+// +___________+
+
+    fild(Dato1);
+
+    fild(Dato2);
+
+
+
+    fild(Dato3);									//_P1011 6 de 7
+
+    fsub();
+
+    fadd();
+
+    fist(Dato4);
+
+    stdout.put(nl,"El resultado (Dato1+Dato2-Dato3=Dato1 Dato2 Dato3-+)es: ",Dato4,nl);
+
+//Operaciones con tres datos Dato1+Dato2/Dato3
+
+//	Pila:
+
+// +___________+
+
+// |   Dato3   |  st0
+
+// +___________+
+
+// |   Dato2   |  st1
+
+// +___________+
+
+// |   Dato1   |  st2
+
+// +___________+
+
+    fild(Dato1);
+
+    fild(Dato2);
+
+
+
+    fild(Dato3);										//_P1011 7 de 7
+
+    fdiv();
+
+    fmul();
+
+    fist(Dato4);
+
+    stdout.put(nl,"El resultado (Dato1*Dato2/Dato3=Dato1 Dato2 Dato3*/)es: ",Dato4,nl);
+              
+end P1011;

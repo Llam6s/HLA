@@ -1,0 +1,55 @@
+//#*****************************************************************	//_P611	1 de 2
+
+//#	EJERCICIO P611.
+
+//#
+
+//#	Ingresar datos hexadecimales. Operaciones lógicas And, Or, Xor y Not
+
+//#*****************************************************************
+
+Program P611;
+
+#include("stdlib.hhf");
+
+begin P611;
+
+	stdout.put("Ingresar el primer operando: ");
+	
+	stdin.get(eax);
+	
+	stdout.put("Ingresar el Segundo operando: ");
+	
+	stdin.get(ebx);
+
+	mov(eax,ecx);
+
+	and(ebx,ecx);
+
+	stdout.put("$",eax,"  AND  $",ebx,"= $",ecx,nl);
+
+	mov(eax,ecx);
+
+	or(ebx,ecx);							//_P611 2 de 2
+
+	stdout.put("$",eax,"  OR   $",ebx,"= $",ecx,nl);
+
+	mov(eax,ecx);
+
+	xor(ebx,ecx);
+
+	stdout.put("$",eax,"  XOR  $",ebx,"= $",ecx,nl);
+
+	mov(eax,ecx);
+
+	not(ecx);
+
+	stdout.put("NOT $",eax," = $",ecx,nl);
+
+	mov(ebx,ecx);
+
+	not(ecx);
+
+	stdout.put("NOT $",ebx," = $",ecx,nl);	
+
+end P611;

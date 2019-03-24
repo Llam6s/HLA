@@ -1,0 +1,61 @@
+//#*****************************************************************	//_P531	1 de 2
+
+//#	PARTE No PS31.
+
+//#
+
+//#	Ingresar un dato decimal, convertirlo a hexadecimal y 
+
+//#	sacarle el complemento a dos
+
+//#*****************************************************************
+
+Program P531;
+
+#include("stdlib.hhf");
+
+static
+
+	PosValue: int8;
+
+	NegValue: int8;
+
+
+begin P531;
+	
+	stdout.put("Ingresar un entero entre 0 y 127: ");
+
+	stdin.get(PosValue);
+
+	stdout.put(nl,"El valor en hexadecimal es: $");
+
+	stdout.putb(PosValue);
+
+
+	mov(PosValue,al);						//_P531 2 de 2
+
+	not(al);
+
+	stdout.put(nl,"Invertir todos los bits: $",al,nl);
+
+	add(1,al);
+
+	stdout.put("Sumar uno:$",al,nl);
+
+	mov(al,NegValue);
+
+	stdout.put("El resultado en decimal es: ",NegValue,nl);
+
+	stdout.put(nl,"La misma cosa con la instruccion NEG: ",nl);
+
+	mov(PosValue,al);
+
+	neg(al);
+
+	mov(al,NegValue);
+
+	stdout.put("El valor Hexadecimal es: $",al,nl);
+
+	stdout.put("El valor Decimal es: ",NegValue,nl);
+
+end P531;

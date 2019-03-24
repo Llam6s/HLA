@@ -1,0 +1,19 @@
+//#*****************************************************************	//_P211	1 de 1
+
+//#	EJERCICIO 211.
+
+//#
+
+//#	Utilizar el programa "HLA" para visualizar un mensaje
+
+//#*****************************************************************
+
+Program P211;
+
+#include("stdlib.hhf");
+
+begin P211;
+
+	stdout.put("Hola,MANUEL",nl);
+
+end P211;

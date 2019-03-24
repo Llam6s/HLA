@@ -1,0 +1,166 @@
+//#*****************************************************************	//_P551	1 de 2
+
+//#	PARTE No PS51.
+
+//#
+
+//#	Multiplicacion de 8, 16 y 32 bits, con y sin signo
+
+//#*****************************************************************
+
+Program P551;
+
+#include("stdlib.hhf");
+
+static
+
+	D18b: int8;
+
+	D116b: int16;
+
+	D132b: int32;
+
+
+begin P551;
+
+//Multiplicacion "mul" sin signo de 8 bits
+
+	stdout.put(nl,"Multiplicacion de 8 bits",nl);
+
+	stdout.put(nl,"Ingresar D18b dato 8bits hexadecimal entre 00 y FF: ");
+
+	stdin.get(bl);
+
+
+
+	stdout.put(nl,"Ingresar D18b dato 8 bits hexadecimal entre 00 y FF: ");	//_P551 2 de 4
+
+	stdin.get(cl);
+
+	mov(bl,al);
+
+	mov(cl,D18b);
+
+	stdout.put(nl,"D18b es: $",al);
+
+	stdout.put("	D28b es: $",cl);
+
+	mul(D18b);
+
+	stdout.put("	Sin signo D18b x D28b es: $",ax,nl);
+
+//Multiplicacion "imul" con signo de 8 bits
+
+	mov(bl,al);
+
+	imul(D18b);
+
+	stdout.put("		Con signo D18b x D28b es: $",ax,nl);
+
+//Multiplicacion "mull" sin signo de 16 bits
+
+	stdout.put(nl,nl,"Multiplicacion de 16 bits",nl);
+
+	stdout.put(nl,"Ingresar D116b dato 16 bits en hex entre 0000 y FFFF: ");
+
+	
+	stdin.get(bx);
+
+
+	stdout.put("Ingresar D216b dato 16 bits hex entre 0000 y FFFF: ")	//_P551 3 de 4
+
+	stdin.get(cx);
+
+	mov(bx,ax);
+
+	mov(cx,D116b);
+
+	stdout.put(nl,"D116b es: $",ax);
+
+	stdout.put("	D216bes: $",cx,nl);
+
+	mul(D116b);
+
+	stdout.put("		Sin signo D116b x D216b es: $",dx,ax,nl);
+
+//Multiplicacion "imul" con signo de 16 bits
+
+	mov(bx,ax);
+
+	imul(D116b);
+
+	stdout.put("		Con signo D116b x D216b es: $",dx,ax,nl);
+
+//Multiplicacion "mul" sin signo de 32 bits
+
+	stdout.put(nl,nl,"Multiplicacion de 32 bits", nl);
+
+	stdout.put(nl,"Ingresar D132b(32 bits) hex entre 00000000 y FFFFFFFFF: ");
+
+	
+	stdin.get(ebx);
+
+
+
+
+	stdout.put("Ingresar D216b dato 16 bits hex entre 0000 y FFFF: ");		//_P551 3 de 4
+
+	stdin.get(cx);
+
+	mov(bx,ax);
+
+	mov(cx,D116b);
+
+	stdout.put(nl,"D116b es: $",ax);
+
+	stdout.put("	D216b es: $",cx,nl);
+
+	mul(D116b);
+
+	stdout.put("		Sin signo D116b x D216b es: $",dx,ax,nl);
+
+//Multiplicacion "imul" con signo de 16 bits
+
+	mov(bx,ax);
+
+	imul(D116b);
+
+	stdout.put("		Con signo D116b x D216b es: $",dx,ax,nl);
+
+//Multiplicacion "mul" suin signo de 32 bits
+
+	stdout.put(nl,nl,"Multiplicacion de 32 bits",nl);
+
+	stdout.put(nl,"Ingresar D132b(32 bits) hex entre 00000000 y FFFFFFFF: ");
+
+
+	stdin.get(ebx);
+
+
+
+
+	stdout.put("Ingresar D323b (32 bits) hex entre 00000000 y FFFFFFFF: ");		//_P551 4 de 4
+
+	stdin.get(ecx);
+
+	mov(ebx,eax);
+
+	mov(ecx,D132b);
+
+	stdout.put(nl,"D132b es: $",eax);
+
+	stdout.put("	D232b es: $",ecx,nl);
+
+	mul(D132b);
+
+	stdout.put("		Sin signo D132b x D232b es: $",edx,eax,nl);
+
+//Multiplicacion "imul" con signo de 32 bits
+
+	mov(ebx,eax);
+
+	imul(D132b);
+
+	stdout.put("		Con signo D132b x D232b es: $",edx,eax,nl);
+
+end P551;

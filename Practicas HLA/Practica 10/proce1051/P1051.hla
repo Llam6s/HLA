@@ -1,0 +1,203 @@
+//#*****************************************************************			//_P1051 1 de 7
+
+//#	EJERCICIO P1051.
+
+//#
+
+//#	Calculadora con el FPU para dos números y operaciones "+ - * /",
+
+//#*****************************************************************
+
+Program P1051;
+
+#include("stdlib.hhf");
+
+static
+
+	Dato1:real64;
+
+	Dato2:real64;
+
+	Dato3:real64;
+
+	Dato4:real64;
+
+begin P1051;
+
+//Poner los datos:
+
+	stdout.put("Ingresar el valor con decimales Dato1: ");
+
+	stdin.get(Dato1);
+
+
+
+	stdout.put(nl,"Ingresar el valor con decimales Dato2: ");			//_P1051 2 de 7
+
+	stdin.get(Dato2);
+
+	stdout.put(nl,"Ingresar el valor con decimales Dato 3: ");
+
+	stdin.get(Dato3);
+
+	stdout.put(nl,"Ingresar el 1er Operador(+-*/): ");
+
+	stdin.readLn();
+
+	stdin.getc();
+
+	mov(al,bl);
+
+	stdout.put(nl,"Ingresar el 2do Operador(+-*/): ");
+
+	stdin.readLn();
+
+	stdin.getc();
+
+//Poner los datos en FPU
+
+	fld(Dato1);
+
+	fld(Dato2);
+
+	fld(Dato3);
+
+//Operaciones con los dos primeros datos
+
+//	Pila:										//_P1051 3 de 7
+
+// +___________+
+
+// |   Dato3   |   st0   |
+
+// +___________+         | Dato2 Dato3(+-*/)
+
+// |   Dato2   |   st1   |
+
+// +___________+ ________+
+
+// |   Dato2   |   st2
+
+// +___________+
+
+//Suma "Dato2 Dato3 +"
+	
+	if( al='+') then
+
+		fadd();
+
+	else
+
+//Resta "Dato2 Dato3-"
+
+	 if( al='-')then
+
+		fsub();
+
+	else
+
+//Multiplicación: Dato2 Dato3*								//_P1051 4 de 7
+
+		if(al='*')then
+
+			fmul();
+
+		else
+
+//División: Dato2 Dato3/
+
+			if(al='/')then
+
+				fdiv();
+
+			else
+
+				stdout.put(nl,"Operador incorrecto",nl);
+
+				jmp Fin;
+
+			endif;
+
+		endif;
+
+	endif;
+
+  endif;
+
+//Operaciones con el último dato
+
+//	Pila:
+
+// +____________________+								//_P1051 5 de 7
+
+// | Dato2 Dato3 (+-*/) |  st0
+
+// +____________________+
+
+// |       Dato1        |   st1
+
+// +____________________+
+
+//Suma * [Dato1][Dato2 Dato3(+-*/)]+"
+
+	if( bl='+')then
+
+		fadd();
+
+		fst(Dato4);
+
+		stdout.put(nl,"El resultado es:",Dato4,nl);
+
+	else
+
+//Resta "[Dato1][Dato2 Dato3(+-*/)]-"
+
+	if( bl='-' )then
+
+		fsub();
+
+		fst(Dato4);
+
+		stdout.put(nl,"El resultado es:",Dato4,nl);
+
+
+
+	else									//_P1051 6 de 7
+
+//Multiplicación: [Dato1][Dato2 Dato3(+-*/)]*
+
+	if( bl='*')then
+
+		fmul();
+
+		fst(Dato4);
+
+		stdout.put(nl,"El resultado es:",Dato4,nl);
+
+	else
+
+//Division: [Dato1][Dato2 Dato3(+-*/)]/
+
+	if( bl='/')then
+
+		fdiv();
+
+		fst(Dato4);
+
+		stdout.put(nl,"El resultado es:",Dato4,nl);
+
+	else
+
+		stdout.put(nl,"Operador incorrecto",nl);
+
+	endif;
+
+   endif;
+
+ endif;										//_P1051 7 de 7
+
+endif;
+
+Fin:
+
+end P1051;

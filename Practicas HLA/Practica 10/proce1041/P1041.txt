@@ -1,0 +1,113 @@
+//#*****************************************************************			//_P1041 1 de 4
+
+//#	EJERCICIO P1041.
+
+//#
+
+//#	Calculadora con el FPU para dos números y operaciones "+ - * /",
+
+//#*****************************************************************
+
+Program P1041;
+
+#include("stdlib.hhf");
+
+static
+
+	Dato1:real64;
+
+	Dato2:real64;
+
+	Dato3:real64;
+
+	Dato4:real64;
+
+begin P1041;
+
+//Poner los datos:
+
+	stdout.put("Ingresar el valor con decimales Dato1: ");
+
+	stdin.get(Dato1);
+
+
+
+	stdout.put(nl,"Ingresar el valor con decimales Dato2: ");			//_P1041 2 de 4
+
+	stdin.get(Dato2);
+
+	stdout.put(nl,"Ingresar el Operador(+-*/): ");
+
+	stdin.readLn();
+
+	stdin.getc();
+
+//Poner los datos en el FPU
+
+	fld(Dato1);
+
+	fld(Dato2);
+
+//Suma "Dato Dato2 +"
+
+	if( al='+') then
+
+		fadd();
+
+		fst(Dato4);
+
+		stdout.put(nl,"El resultado ( Dato1+Dato2=Dato1 Dato2+ )es:",Dato4,nl);
+
+	else
+
+//Resta "Dato1 Dato2-"
+
+	if( al='-' )then
+
+		
+
+		fsub();									//_P1041 3 de 4
+
+		fst(Dato4);
+
+		stdout.put(nl,"El resultado( Dato1-Dato2=Dato1 Dato2- )es: ",Dato4,nl);
+
+	else
+
+//Multiplicacion: Dato1 Dato2*
+
+		if( al='*')then
+
+			fmul();
+			
+			fst(Dato4);
+
+			stdout.put(nl,"El resultado ( Dato1*Dato2=Dato1 Dato2* )es: ",Dato4,nl);
+
+		else
+
+//División: Dato1 Dato2/
+
+			if( al='/') then
+
+				fdiv();
+
+				fst(Dato4);
+
+				stdout.put(nl,"El resultado(Dato1/Dato2=Dato1 Dato2/ )es: ",Dato4,nl);
+
+			else
+
+
+
+				stdout.put(nl,"Operador incorrecto",nl);		//_P1014 4 de 4
+
+			endif;
+
+		endif;
+
+	endif;
+   
+   endif;
+
+end P1041;

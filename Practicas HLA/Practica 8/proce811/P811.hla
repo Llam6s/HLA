@@ -1,0 +1,454 @@
+//#*****************************************************************			//_P811	1 de 14
+
+//#	EJERCICIO P811.
+
+//#
+
+//#	Comparar dos cantidades de 8,16 y 32 bits, con CMP
+
+//#*****************************************************************
+
+Program P811;
+
+#include("stdlib.hhf");
+
+static
+
+	D18b:	int8;
+
+	D28b:	int8;
+
+	D116b:	int16;
+
+	D216b:	int16;
+
+	D132b:	int32;
+
+	D232b:	int32;
+
+// Ejemplo:
+
+//	Datos:					Banderas:
+
+// D116b	-	D216b:	Resultado:	C   Z   S   0				//_P811 2 de 14	
+
+// 0001		-	0002	= FFFF(-1)	1   0   1   0
+
+// 0002		-	0001	= 0001		0   0   0   0
+
+// 0001		-	0001	= 0000		0   1   0   0
+
+// FFFF(-1)	-	FFFE(-2)= 0001		0   0   0   0
+
+// FFFE(-2)	-	FFFF(-1)= FFFF(-1)	1   0   1   0
+
+// 8000 [-32768]-	0001	= 7FFF		0   0   0   1
+
+//7FFF [32767]	-	FFF(-1) = 8000		1   0   1   1
+
+begin P811;
+	
+//Instrucción compare "cmp" de dos cantidades de 8 bits y afecta las banderas Z,S,0,C
+
+	stdout.put(nl,"Compara dos numeros de ocho bits D18b-D28b",nl);
+
+	stdout.put(nl, "Ingresar D18 dato 8 bits hexadecimal entre 00 y FF: ");
+	
+	stdin.get(al);
+
+	stdout.put("Ingresar D28b dato 8 bits hexadecimal entre 00 y FF: ");
+
+	stdin.get(bl);
+
+//Para visualizar las banderas del EFLAGS:Z,S,O,C
+
+
+//visualiza la bandera de Zero"Z"							//_P811 3 de 14
+
+	cmp(al,bl);
+
+	if(@z) then
+
+			stdout.put("Zero=1",nl);
+
+		else
+
+			stdout.put("Zero=0",nl);
+
+	endif;
+
+//visualiza la bandera de Signo "S"
+
+	cmp(al,bl);
+
+	if(@s) then
+
+			stdout.put("Signo=1",nl);
+
+		else
+
+			stdout.put("Signo=0",nl);
+	endif;
+
+//Visualiza la bandera de Carry "C"
+
+	cmp(al,bl);
+
+											//_P811 4 de 14
+
+	if(@c) then
+
+			stdout.put("Carry=1",nl);
+
+		else
+
+			stdout.put("Carry=0",nl);
+
+	endif;
+
+//Visualiza la bandera de Overflow "O"
+
+	cmp(al,bl);
+
+	if(@o) then
+
+		stdout.put("Overflow = 1", nl)
+	
+	else
+
+		stdout.put("Carry=0",nl);
+
+	endif;
+
+//Visualiza la bandera Overflow "O"
+
+	cmp(al,bl);
+
+	if(@o) then
+
+		stdout.put("Overflow=1",nl);
+
+	else
+
+		stdout.put("Overflow=0",nl);
+
+	endif;
+
+//Determinar cual es mayor o igual;
+
+	stdout.put(nl,"		La comparacion es con Signo",nl);
+
+	cmp(al,bl);
+
+	
+	if(@z) then
+
+	
+
+
+//Z=1:D18b = D28b
+
+		stdout.put("D18b=D28b",nl);
+
+	else
+
+		cmp(al,bl);
+
+		if(@s) then
+
+			cmp(al,bl);
+
+			if(@o) then
+
+//S=1 y O=1: D18b>D28b
+
+				stdout.put("D18b>D28b",nl);
+
+			else
+
+//S=1 y O=0;D18b>D28b
+
+				stdout.put("D18b<D28b",nl);
+
+		endif;
+
+		else
+
+			cmp(al,bl);
+
+			if(@o) then
+
+//S=0 y O=1:D18b<D28b									//_P811 6 de 14
+
+				stdout.put("D18b<D28b",nl);
+
+			else
+
+//S=0 Y O=0;D18b>D28b
+
+				stdout.put("D18b>D28b",nl);
+
+			endif;
+
+	endif;
+
+	endif;
+
+	stdout.put("",al);
+
+	stdout.put(" ",bl);
+
+//Instrucción compare "cmp" de dos cantidades de 16 bits y afecta las banderas Z,S,O,C
+
+	stdout.put(nl,nl,"Compara dos numeros de 16 bits D116b-D216b",nl);
+
+	stdout.put(nl,"Ingresar D116b dato 16 bits hex entre 0000 y FFFF: ");
+
+	stdin.get(ax);
+
+	stdout.put("Ingresar D216b dato 16 bits  hexadecimal entre 0000 y FFFF: ");
+
+	stdin.get(bx);
+
+
+
+//Para visualizar las banderas del EFLAGS: Z,S,O,C						//_P811 7 de 14
+
+//Visualiza la banda de Zero"Z"
+
+	cmp(ax,bx);
+
+	if(@z) then
+
+			stdout.put("Zero=1",nl);
+	
+		else
+
+			stdout.put("Zero=0",nl);
+
+	endif;
+
+//Visualiza la bandera de Signo "S"
+
+	cmp(ax,bx);
+
+	if(@s) then
+
+			stdout.put("Signo=1",nl);
+
+		else
+
+			stdout.put("Signo=0",nl);
+
+	endif;
+
+//Visualiza la bandera de Carry "C"
+
+												//_P811 8 de 14
+
+
+	cmp(ax,bx);
+
+	if(@c) then
+
+			stdout.put("Carry=1",nl);
+
+		else
+
+			stdout.put("Carry=0",nl);
+
+
+	endif;
+
+//Visualiza la bandera de Overflow O"
+
+	cmp(ax,bx);
+
+	if(@o) then
+
+			stdout.put("Overflow=1",nl);
+
+		else
+
+			stdout.put("Overflow=0",nl);
+
+	endif;
+
+//Determinar cual es mayor o igual:
+
+	stdout.put(nl,"		La comparacon es con Signo",nl);
+
+	cmp(ax,bx);
+
+
+
+	if(@z) then										//_P811 9 de 14
+
+//Z=1:D116b=D216b
+
+			stdout.put("D116b=D216b",nl);
+
+		else
+
+			cmp(ax,bx);
+
+			if(@s) then
+
+				cmp(ax,bx);
+
+				if(@o) then
+
+//S=1 y O=1:D116b>D216b
+
+				stdout.put("D116b>D216b",nl);
+
+			else
+
+//S=1 y O=0:D116b<D216b
+
+				stdout.put("D116b>D216b",nl);
+
+			endif;
+
+		else
+
+			cmp(ax,bx);
+
+
+
+			if(@o) then								//_P811 10 de 14
+
+//S=0 y O=1:D116b<D216b
+
+				stdout.put("D116b<D216b",nl);
+
+			else
+
+//S=0 y O=0:D116b>D216b
+
+				stdout.put("D116b>D216b",nl);
+
+		endif;
+
+	endif;
+
+	endif;
+
+	stdout.put("",ax);
+
+	stdout.put(" ",bx);
+
+//Instrucción compare "cmp" de dos cantidades de 32 bits y afecta las banderas Z,S,O,C
+
+	stdout.put(nl,nl,"Compara dos numeros de 32 bits D132b-D232b",nl);
+
+	stdout.put(nl,"Ingresar D132b(32 bits) hex entre 00000000 y FFFFFFFF: ");
+
+	stdin.get(eax);
+
+	stdout.put("Ingresar D232(32 bits) hex entre 00000000 y FFFFFFFF: ");
+
+												//_P811 11 de 14
+
+
+	stdin.get(ebx);
+
+	if(@z) then
+
+			stdout.put("Zero=1",nl);
+
+		else
+
+			stdout.put("Zero=0",nl);
+
+	endif;
+
+//Visualiza la bandera de Signo "S"
+
+	cmp(eax,ebx);
+
+	if(@s) then
+
+			stdout.put("Signo=1",nl);
+
+		else
+
+			stdout.put("Signo=0",nl);
+
+	endif;
+
+//Visualiza la bandera de Carry "C"								//_P811 12 de 14
+
+	cmp(eax,ebx);
+
+	if(@c) then
+
+			stdout.put("Carry=1",nl);
+
+		else
+
+			stdout.put("Carry=0",nl);
+
+	endif;
+
+//Determinar cual es mayor o igual:
+
+	stdout.put(nl,"		La comparacion es con Signo",nl);
+
+
+
+	cmp(eax,ebx);										//_P811 13 de 14
+
+	if(@z) then
+
+//Z=1:D132b=D232d
+
+			stdout.put("	D132b	=	D232b",nl);
+
+	else
+
+			cmp(eax,ebx);
+
+			if(@s) then
+
+				cmp(eax,ebx);
+
+				if(@o) then
+
+//S=1 y O=1;D132b>D232b
+
+					stdout.put(" D132b > D232b",nl);
+
+				else
+
+					stdout.put(" D132b < D232b",nl);
+
+			endif;
+
+		else
+
+			cmp(eax,ebx);								//_P811 14 de 14
+
+			if(@o) then
+
+//S=0 y O=1; D132b<D232b
+
+				stdout.put("	D132b < D232b", nl);
+
+			else
+
+//S=0 y O=0:D132b > D232b
+
+				stdout.put("	D132b > D232b",nl);
+
+			endif;
+
+		endif;
+
+	endif;
+
+	stdout.put("",eax);
+
+	stdout.put(" ",ebx);
+
+end P811;

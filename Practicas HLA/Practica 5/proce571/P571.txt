@@ -1,0 +1,105 @@
+//#*****************************************************************	//_P571	1 de 4
+
+//#	PARTE No P571.
+
+//#
+
+//#	Modulo (residuo) de la division de 16/8 y 32/16 bits, con y sin signo 
+
+//#*****************************************************************
+
+Program P571;
+
+#include("stdlib.hhf");
+
+static
+
+	D18b:	int8;
+
+	D116b:	int16;
+
+	D132b:	int32;
+
+	D232b:	int32;
+
+begin P571;
+
+//Modulo de la division "mod" sin signo de 18/8 bits
+
+	stdout.put(nl,"Modulo de la division de 16/8 btis (RESIDUO)",nl);
+
+	stdout.put(nl,"Ingresar D116b dato 16 bits hex entre 0000 y FFFF: ");
+
+	
+
+	stdin.get(ebx);										//_P571 2 de 4
+
+	stdout.put("Ingresar D18b dato 8 bits hexadecimal entren 00 y FF: ");
+
+	stdin.get(cx);
+
+	mov(ebx,eax);
+
+	mov(cx,D116b);
+
+	stdout.put(nl,"D116b es: $",ax);
+
+	stdout.put("	D18b es: $",cl);
+
+	mov($00000000, edx);
+
+	mod(D116b);
+
+	stdout.put("	Sin signo D116b/D18b el modulo es: $",dl,nl);
+
+//Modulo de la division "imov" con signo de 16/8 bits
+
+	mov(ebx,eax);
+
+	mov($00000000,edx);
+
+	imod(D116b);
+
+	stdout.put("		Con signo D116b/D18b el modulo es: $",dl,nl);
+
+//Modulo de la division "mod" sin signo de 32/16 bits
+
+
+
+	stdout.put(nl,"Modulo de la division de 32/16 bits",nl);				//_P571 3 de 4
+
+	stdout.put(nl,"Ingresar D132b(32 bits) hex entre 00000000 y FFFFFFFF: ");
+
+	stdin.get(ebx);
+
+	stdout.put("Ingresar D116b dato 16 bits hexadecimal entre 0000 y FFFF: ");
+
+	stdin.get(ecx);
+
+	mov(ebx,eax);
+
+	mov(ecx,D232b);
+
+	stdout.put(nl,"D132b:$",eax);
+
+	stdout.put("	D16b:$",cx);
+
+	mov($00000000,edx);
+
+	mod(D232b);
+
+	stdout.put("	Sin signo D132b/D116b el modulo es: $",dx,nl);
+
+//Modulo de la division "imod" con signo de 32/16 bits
+
+	mov(ebx,eax);
+
+	mov($00000000, edx);
+
+	
+	imod(D232b);
+
+
+	stdout.put("		Con signo D132b/D116b el modulo es: $",dx,nl);			//_P571 4 de 4
+
+end P571;

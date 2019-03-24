@@ -1,0 +1,139 @@
+//#*****************************************************************	//_P621	1 de 5
+
+//#	PARTE No P621.
+
+//#
+
+//#	Ingresar un dato hexadecimal. Realiza:
+
+//#	Shl(corrimiento a la izquierda con carry);
+
+//#	Shr(corrimiento a la derecha con carry);
+
+//#	Sar(corrimiento a la derecha con carry y realimentacion del bit mas significativo);
+
+//#	Rol(corrimientoa la izquierda con realimentacion del bit mas significativo al bit
+
+//#	menos significativo del carry);
+
+//#	Ror(corrimiento a la derecha con realimentacion del bit menos significativo al bit mas
+
+//#	significativo y carry);
+
+//#	Rcl(corrimiento a la izquierda con realimentacion del bit mas significativo al carry y al bit
+
+//#	menos significativo);
+
+//#	Rcr(corrimiento a la derecha con realimentacion del bit menos significativo al carry y al bit
+
+//#	mas significativo)
+
+//#*****************************************************************
+
+Program ShiftsRotation;							//_P621 2 de 5
+
+#include("stdlib.hhf");
+
+begin ShiftsRotation;
+
+	stdout.put("Meter dato hexadecimal entre 00 y FF: ");
+	
+	stdin.get(al);
+
+//"shl(cuantas rotaciones, registro a rotar)" corrimiento a la izquierda con carry
+
+//ejemplo; shl(1, bl) rota una vez, shl(2, bl)rota dos veces
+
+	mov(al,bl);
+
+	shl(1,bl);
+
+	stdout.put(nl,"Valor original es: $",al,nl);
+
+	stdout.put(nl,"Valor rotado a la izquierda es: $",bl,nl);
+
+//"shr(cuantas rotaciones, registro a rotar)" corrimiento a la derecha con carry
+
+//ejemplo; shr(1,bl) rota una vez, shr(2,bl)rota dos veces
+
+	mov(al,bl);
+
+	shr(1,bl);
+	
+	stdout.put(nl,"Valor original es:$",al,nl);
+
+
+
+	stdout.put(nl,"Valor rotado a la derecha es: $",bl,nl);			//_P621 3 de 5
+
+//"sar(cuantas rotaciones, registro a rotar)" corrimiento a la derecha con carry y
+
+//realimentacion del bit mas significativo
+
+//ejemplo; sar(1,bl) rota una vez, sar(2,bl)rota dos veces
+
+	mov(al,bl);
+
+	sar(1,bl);
+
+	stdout.put(nl,"Valor original es: $",al,nl);
+
+	stdout.put(nl,"Valor rotado a la derecha es: $",bl,nl);
+
+//"rol(cuantas rotaciones, registro a rotar)" corrimiento a la izquierda con realimentacion
+
+//del bit mas significativo al bit menos significativo y carry				
+
+//ejemplo, roll(1,bl) rota una vez, roll(2,bl) rota dos veces
+
+	mov(al,bl);
+
+	rol(1,bl);
+
+	stdout.put(nl,"Valor original es: $",al,nl);
+
+	stdout.put(nl,"Valor rotado a la izquierda es: $",bl,nl);
+
+//"ror (cuantas rotaciones, registro a rotar)" corrimiento a la derecha con realimentacion del bit
+
+//menos significativo al bit mas significativo y carry				//_P621 4 de 5
+
+//ejemplo; ror(1,bl) rota una vez, ror(2,bl) rota dos veces
+
+	mov(al,bl);
+
+	ror(1,bl);
+
+	stdout.put(nl,"Valor original es: $",al,nl);
+
+	stdout.put(nl,"Valor rotado a la derecha es: $",bl,nl);
+
+//"rcl(cuantas rotaciones, registro a rotar)" corrimiento a la izquierda con realimentacion del
+
+//bit mas significativo al carry y al bit menos significativo
+
+//ejemplo; rcl(1,bl) rota una vez, rcl(2,bl) rota dos veces
+
+	mov(al,bl);
+
+	rcl(1,bl);
+
+	stdout.put(nl,"Valor original es: $",al,nl);
+
+	stdout.put(nl,"Valor rotado a la izquierda es: $",bl,nl);
+
+//"rcr(cuantas rotaciones, registro a rotar)" corrimiento a la derecha con relimentacion del bit
+
+//menos significativo al carry y al bit mas significativo
+
+//ejemplo; rcr(1,bl) rota una vez, rcr(2,bl) rota dos veces
+
+	mov(al,bl);
+
+	rcr(1,bl);							//_P621 5 de 5
+
+	stdout.put(nl,"Valor original es: $",al,nl);
+
+	stdout.put(nl,"Valor rotado a la derecha es: $",bl,nl);
+
+end ShiftsRotation;

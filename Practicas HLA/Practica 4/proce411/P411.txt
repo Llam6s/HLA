@@ -1,0 +1,30 @@
+//#*****************************************************************	//_P411	1 de 1
+
+//#	EJERCICIO P411.
+
+//#
+
+//#	Ingresar un dato decimal y convertirlo a hexadecimal
+
+//#*****************************************************************
+
+Program P411;
+
+#include("stdlib.hhf");
+
+static
+
+	value: int32;
+
+begin P411;
+
+	stdout.put("Ingresar el valor decimal: ");
+	
+	stdin.get(value);
+
+	mov(value,eax);
+
+	stdout.put("El valor es: ",value," Convertido a hex es: $",eax,nl);
+
+
+end P411;

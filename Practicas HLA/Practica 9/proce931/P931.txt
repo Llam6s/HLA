@@ -1,0 +1,31 @@
+//#*****************************************************************				//_P931 1 de 1
+
+//#	PARTE No P931.
+
+//#
+
+//#	Programa sin subrutina
+
+//#*****************************************************************
+
+Program P931;
+
+#include("stdlib.hhf");
+
+//Programa principal
+
+static
+
+	VariableGlobal:		int8;
+
+begin P931;
+
+	stdout.put(nl,"Programa sin subrutina",nl);
+
+	mov($40,VariableGlobal);
+
+	mov(VariableGlobal,al);
+
+	stdout.put(nl,"VariableGlobal = $",al,nl);
+
+end P931;

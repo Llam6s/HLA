@@ -1,0 +1,29 @@
+//#*****************************************************************	//_P421	1 de 1
+
+//#	EJERCICIO P421.
+
+//#
+
+//#	Ingresar un dato hexadecimal y convertirlo a decimal
+
+//#*****************************************************************
+
+Program P421;
+
+#include("stdlib.hhf");
+
+static
+
+	value: int32;
+
+begin P421;
+
+	stdout.put("Ingresar el valor hexadecimal: ");
+	
+	stdin.get(ebx);
+
+	mov(ebx,value);
+
+	stdout.put("El valor es: $",ebx," La conversión a decimal es: ",value,nl);
+
+end P421;

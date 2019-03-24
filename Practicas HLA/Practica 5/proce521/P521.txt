@@ -1,0 +1,79 @@
+//#*****************************************************************	//_P521	1 de 3
+
+//#	EJERCICIO P521.
+
+//#
+
+//#	Entra dato en hexadecimal, se incrementa y se decrementa
+
+//#*****************************************************************
+
+Program P521;
+
+#include("stdlib.hhf");
+
+begin P521;
+
+//Incremento y Decremento de 8 bits
+
+	stdout.put(nl,"Incremento y Decremento de 8 bits",nl);
+
+	stdout.put(nl,"Ingresar dato hexadecimal entre 00 y FF: ");
+
+	stdin.get(al);
+
+	stdout.put(nl,"Valor original es: $",al,nl);
+
+	mov(al,bl);
+
+	inc(al);
+
+	dec(bl);
+
+
+	stdout.put(nl,"Valor incrementado es: $",al,nl);		//_P521 2 de 3
+
+	stdout.put(nl,"Valor decrementado es: $",bl,nl);
+
+//Incremento y Decremento de 16 bits
+
+	stdout.put(nl,nl,"Incremento y Decremento de 16 bits",nl);
+
+	stdout.put(nl,"Ingresar dato hexadecimal entre 0000 y FFFF: ");
+
+	stdin.get(ax);
+
+	stdout.put(nl,"Valor original es: $",ax,nl);
+
+	mov(ax,bx);
+
+	inc(ax);
+
+	dec(bx);
+
+	stdout.put(nl,"Valor incrementado es: $",ax,nl);
+
+	stdout.put(nl,"Valor decrementado es: $",bx,nl);
+
+//Incremento y Decremento de 32 bits
+
+	stdout.put(nl,nl,"Incremento y Decremento de 32 bits",nl);
+
+	stdout.put(nl,"Ingresar dato hexadecimal entre 00000000 y FFFFFFFF: ");
+
+	stdin.get(eax);
+
+	
+	stdout.put(nl,"Valor original es: $",eax,nl);			//_P521 3 de 3
+
+	mov(eax,ebx);
+
+	inc(eax);
+
+	dec(ebx);
+
+	stdout.put(nl,"Valor incrementado es: $",eax,nl);
+
+	stdout.put(nl,"Valor decrementado es: $",ebx,nl);
+
+end P521;

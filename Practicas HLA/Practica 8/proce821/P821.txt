@@ -1,0 +1,523 @@
+//#*****************************************************************				//_P821	1 de 16
+
+//#	PARTE No P821.
+
+//#
+
+//#	Activa un registro de 8 bits dependiendo del contenido de las
+
+//#	banderas con la instrucción SETCC
+
+//#*****************************************************************
+
+Program P821;
+
+#include("stdlib.hhf");
+
+static
+
+	D18b:	int8;
+
+	D28b:	int8;
+
+	D116b:	int16;
+
+	D216b:	int16;
+
+	D132b:	int32;
+
+	D232b:	int32;
+
+// Ejemplo:
+
+//	Datos:					Banderas:
+
+// D116b	-	D216b:	Resultado:	C   Z   S   0					//_P821 2 de 16
+
+// 0001		-	0002	= FFFF(-1)	1   0   1   0
+
+// 0002		-	0001	= 0001		0   0   0   0
+
+// 0001		-	0001	= 0000		0   1   0   0
+
+// FFFF(-1)	-	FFFE(-2)= 0001		0   0   0   0
+
+// FFFE(-2)	-	FFFF(-1)= FFFF(-1)	1   0   1   0
+
+// 8000 [-32768]-	0001	= 7FFF		0   0   0   1
+
+//7FFF [32767]	-	FFF(-1) = 8000		1   0   1   1
+
+begin P821;
+	
+//Instrucción compare "cmp" de dos cantidades de 8 bits y afecta las banderas Z,S,0,C
+
+	stdout.put(nl,"Compara dos numeros de ocho bits D18b-D28b",nl);
+
+	stdout.put(nl, "Ingresar D18 dato 8 bits hexadecimal entre 00 y FF: ");
+	
+	stdin.get(al);
+
+	stdout.put("Ingresar D28b dato 8 bits hexadecimal entre 00 y FF: ");
+
+	stdin.get(bl);
+
+//Para visualizar las banderas del EFLAGS:Z,S,O,C
+
+
+//visualiza la bandera de Zero"Z"								//_P821 3 de 16
+
+	cmp(al,bl);
+
+	if(@z) then
+
+			stdout.put("Zero=1",nl);
+
+		else
+
+			stdout.put("Zero=0",nl);
+
+	endif;
+
+//visualiza la bandera de Signo "S"
+
+	cmp(al,bl);
+
+	if(@s) then
+
+			stdout.put("Signo=1",nl);
+
+		else
+
+			stdout.put("Signo=0",nl);
+	endif;
+
+//Visualiza la bandera de Carry "C"
+
+	cmp(al,bl);
+
+												//_P821 4 de 16
+
+	if(@c) then
+
+			stdout.put("Carry=1",nl);
+
+		else
+
+			stdout.put("Carry=0",nl);
+
+	endif;
+
+//Visualiza la bandera de Overflow "O"
+
+	cmp(al,bl);
+
+	if(@o) then
+
+		stdout.put("Overflow = 1", nl);
+	
+	else
+
+		stdout.put("Carry=0",nl);
+
+	endif;
+
+//Pone "1" en "cl" si el Carry "C" se acivo
+
+	stdout.put(nl,nl"SETC pone un 1 en CL cuando el CARRY ES 1",nl);
+
+	cmp(al,bl);
+
+	setc(cl);
+
+
+	stdout.put("El valor de CL es: ",cl,nl);						//_P821 5 de 16
+
+//Pone "1" en "cl" si el Carry "C" no se activo
+
+	stdout.put("SETNC pone un 1 en CL cuando el CARRY es 0",nl);
+
+	cmp(al,bl);
+
+	setnc(cl);
+
+	stdout.put("El valor de CL es: ",cl,nl);
+
+//Pone "1" en "cl" si el Zero "Z" se activo
+
+	stdout.put(nl,nl,"SETZ pone un 1 en CL cuando el ZERO es 1",nl);
+
+	cmp(al,bl);
+
+	setz(cl);
+
+	stdout.put("El valor de CL es: ",cl,nl);
+
+//Pone "1" en "cl" si el Zero "Z" no se activo
+
+	stdout.put("SETNZ pone un 1 en CL cuando el ZERO es 0",nl);
+
+	cmp(al,bl);
+
+	setnz(cl);
+
+	
+	stdout.put("El valor de CL es: ",cl,nl);
+
+
+//Pone "1" en "cl" si el Signo "S" se activo							//_P821 6 de 16
+
+	stdout.put(nl,nl,"SETS pone un 1 en CL cuando el SIGNO es 1",nl);
+
+	cmp(al,bl);
+
+	sets(cl);
+
+	stdout.put("El valor de CL es: ",cl,nl);
+
+//Pone "1" en "cl" si el signo "Z" no se activo
+
+	stdout.put("SETNS pone un 1 en CL cuando el SIGNO es 0",nl);
+
+	cmp(al,bl);
+
+	setns(cl);
+
+	stdout.put("El valor de CL es: ",cl,nl);
+
+//Pone "1" en "cl" si el Overflow "O" se activo
+
+	stdout.put(nl,nl"SETO pone un 1 en CL cuando el OVERFLOW es 1",nl);
+
+	cmp(al,bl);
+
+	seto(cl);
+
+	stdout.put("El valor de CL es: ",cl,nl);
+
+//Pone "1" en "cl" si el Overflow "O" no se activo
+
+
+	stdout.put("SETNO pone en 1 en CL cuando el OVERFLOW es 0",nl);				//_P821 7 de 16
+
+	cmp(al,bl);
+
+	setno(cl);
+
+	stdout.put("El valor de CL es: ",cl,nl);
+
+//Instrucción compare "cmp" de dos cantidades de 16 bits y afecta las banderas Z,S,O,C
+
+	stdout.put(nl,nl,"Compara dos numeros de 16 bits D116b-D216b",nl);
+
+	stdout.put(nl,"Ingresar DLL6b dato 16 bits hex entre 0000 y FFFF: ");
+
+	stdin.get(ax);
+
+	stdout.put("Ingresar D216b dato 16 bits hexadecimal entre 0000 y FFFF: ");
+
+	stdin.get(bx);
+
+//Para visualizar las banderas del EFLAGS:Z,S,O,C
+
+
+//visualiza la bandera de Zero"Z"								//_P821 8 de 16
+
+	cmp(ax,bx);
+
+	if(@z) then
+
+			stdout.put("Zero=1",nl);
+
+		else
+
+			stdout.put("Zero=0",nl);
+
+	endif;
+
+//visualiza la bandera de Signo "S"
+
+	cmp(ax,bx);
+
+	if(@s) then
+
+			stdout.put("Signo=1",nl);
+
+		else
+
+			stdout.put("Signo=0",nl);
+	endif;
+
+//Visualiza la bandera de Carry "C"
+
+	cmp(ax,bx);
+
+												//_P821 9 de 16
+
+	if(@c) then
+
+			stdout.put("Carry=1",nl);
+
+		else
+
+			stdout.put("Carry=0",nl);
+
+	endif;
+
+//Visualiza la bandera de Overflow "O"
+
+	cmp(ax,bx);
+
+	if(@o) then
+
+		stdout.put("Overflow = 1", nl);
+	
+	else
+
+		stdout.put("Carry=0",nl);
+
+	endif;
+
+//Pone "1" en "cl" si el Carry "C" se acivo
+
+	stdout.put(nl,nl"SETC pone un 1 en CL cuando el CARRY ES 1",nl);
+
+	cmp(ax,bx);
+
+	setc(cl);
+
+
+	stdout.put("El valor de CL es: ",cl,nl);						//_P821 10 de 16
+
+//Pone "1" en "cl" si el Carry "C" no se activo
+
+	stdout.put("SETNC pone un 1 en CL cuando el CARRY es 0",nl);
+
+	cmp(ax,bx);
+
+	setnc(cl);
+
+	stdout.put("El valor de CL es: ",cl,nl);
+
+//Pone "1" en "cl" si el Zero "Z" se activo
+
+	stdout.put(nl,nl,"SETZ pone un 1 en CL cuando el ZERO es 1",nl);
+
+	cmp(ax,bx);
+
+	setz(cl);
+
+	stdout.put("El valor de CL es: ",cl,nl);
+
+//Pone "1" en "cl" si el Zero "Z" no se activo
+
+	stdout.put("SETNZ pone un 1 en CL cuando el ZERO es 0",nl);
+
+	cmp(ax,bx);
+
+	setnz(cl);
+
+	
+	stdout.put("El valor de CL es: ",cl,nl);
+
+
+//Pone "1" en "cl" si el Signo "S" se activo							//_P821 11 de 16
+
+	stdout.put(nl,nl,"SETS pone un 1 en CL cuando el SIGNO es 1",nl);
+
+	cmp(ax,bx);
+
+	sets(cl);
+
+	stdout.put("El valor de CL es: ",cl,nl);
+
+//Pone "1" en "cl" si el signo "Z" no se activo
+
+	stdout.put("SETNS pone un 1 en CL cuando el SIGNO es 0",nl);
+
+	cmp(ax,bx);
+
+	setns(cl);
+
+	stdout.put("El valor de CL es: ",cl,nl);
+
+//Pone "1" en "cl" si el Overflow "O" se activo
+
+	stdout.put(nl,nl"SETO pone un 1 en CL cuando el OVERFLOW es 1",nl);
+
+	cmp(ax,bx);
+
+	seto(cl);
+
+	stdout.put("El valor de CL es: ",cl,nl);
+
+//Pone "1" en "cl" si el Overflow "O" no se activo
+
+
+	stdout.put("SETNO pone en 1 en CL cuando el OVERFLOW es 0",nl);
+
+	cmp(ax,bx);
+
+	setno(cl);
+
+	stdout.put("El valor de CL es: ",cl,nl);
+
+//Instruccion compare "cmp" de dos cantidades de 32 bits y afecta las banderas Z,S,O,C
+
+
+
+	stdout.put(nl,nl,"Compara dos numeros de 32 bits D132b-D232b",nl);			//_P821 12 de 16
+
+	stdout.put(nl,"Ingresar D132b dato (32 bits) hex entre 00000000 y FFFFFFFF: ");
+
+	stdin.get(eax);
+
+	stdout.put("Ingresar D232b dato 32 bits hexadecimal entre 00000000 y FFFFFFFF: ");
+
+	stdin.get(ebx);
+
+//Para visualizar las banderas del EFLAGS:Z,S,O,C
+
+
+//visualiza la bandera de Zero"Z"								//_P821 13 de 16
+
+	cmp(eax,ebx);
+
+	if(@z) then
+
+			stdout.put("Zero=1",nl);
+
+		else
+
+			stdout.put("Zero=0",nl);
+
+	endif;
+
+//visualiza la bandera de Signo "S"
+
+	cmp(eax,ebx);
+
+	if(@s) then
+
+			stdout.put("Signo=1",nl);
+
+		else
+
+			stdout.put("Signo=0",nl);
+	endif;
+
+//Visualiza la bandera de Carry "C"
+
+	cmp(eax,ebx);
+
+											//_P821 14 de 16
+
+	if(@c) then
+
+			stdout.put("Carry=1",nl);
+
+		else
+
+			stdout.put("Carry=0",nl);
+
+	endif;
+
+//Visualiza la bandera de Overflow "O"
+
+	cmp(eax,ebx);
+
+	if(@o) then
+
+		stdout.put("Overflow = 1", nl);
+	
+	else
+
+		stdout.put("Carry=0",nl);
+
+	endif;
+
+//Pone "1" en "cl" si el Carry "C" se acivo
+
+	stdout.put(nl,nl"SETC pone un 1 en CL cuando el CARRY ES 1",nl);
+
+	cmp(eax,ebx);
+
+	setc(cl);
+
+
+	stdout.put("El valor de CL es: ",cl,nl);					//_P821 15 de 16
+
+//Pone "1" en "cl" si el Carry "C" no se activo
+
+	stdout.put("SETNC pone un 1 en CL cuando el CARRY es 0",nl);
+
+	cmp(eax,ebx);
+
+	setnc(cl);
+
+	stdout.put("El valor de CL es: ",cl,nl);
+
+//Pone "1" en "cl" si el Zero "Z" se activo
+
+	stdout.put(nl,nl,"SETZ pone un 1 en CL cuando el ZERO es 1",nl);
+
+	cmp(eax,ebx);
+
+	setz(cl);
+
+	stdout.put("El valor de CL es: ",cl,nl);
+
+//Pone "1" en "cl" si el Zero "Z" no se activo
+
+	stdout.put("SETNZ pone un 1 en CL cuando el ZERO es 0",nl);
+
+	cmp(eax,ebx);
+
+	setnz(cl);
+
+	
+	stdout.put("El valor de CL es: ",cl,nl);
+
+
+//Pone "1" en "cl" si el Signo "S" se activo						//_P821 16 de 16
+
+	stdout.put(nl,nl,"SETS pone un 1 en CL cuando el SIGNO es 1",nl);
+
+	cmp(eax,ebx);
+
+	sets(cl);
+
+	stdout.put("El valor de CL es: ",cl,nl);
+
+//Pone "1" en "cl" si el signo "Z" no se activo
+
+	stdout.put("SETNS pone un 1 en CL cuando el SIGNO es 0",nl);
+
+	cmp(eax,ebx);
+
+	setns(cl);
+
+	stdout.put("El valor de CL es: ",cl,nl);
+
+//Pone "1" en "cl" si el Overflow "O" se activo
+
+	stdout.put(nl,nl"SETO pone un 1 en CL cuando el OVERFLOW es 1",nl);
+
+	cmp(eax,ebx);
+
+	seto(cl);
+
+	stdout.put("El valor de CL es: ",cl,nl);
+
+//Pone "1" en "cl" si el Overflow "O" no se activo
+
+
+	stdout.put("SETNO pone en 1 en CL cuando el OVERFLOW es 0",nl);
+
+	cmp(eax,ebx);
+
+	setno(cl);
+
+	stdout.put("El valor de CL es: ",cl,nl);
+
+end P821;

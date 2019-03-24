@@ -1,0 +1,105 @@
+//#*****************************************************************	//_P561	1 de 4
+
+//#	PARTE No P561.
+
+//#
+
+//#	División de 16/8 y 32/16 bits, con y sin signo
+
+//#*****************************************************************
+
+Program P561;
+
+#include("stdlib.hhf");
+
+static
+
+	D18b:	int8;
+
+	D116b:	int16;
+
+	D132b:	int32;
+
+	D232b:	int32;
+
+begin P561;
+
+//Division "div" sin signo de 16/8 bits
+
+	stdout.put(nl,"Division de 16/8 bits",nl);
+
+
+	stdout.put(nl,"Ingresar D116b dato 16 bits hex entre 0000 y FFFF: ");
+
+	stdin.get(ebx);									//_P561 2 de 4
+
+	stdout.put("Ingresar D18b dato 8 bits hexadecimal entre 00 y FF: ");
+
+	stdin.get(cx);
+
+	mov(ebx,eax);
+
+	mov(cx,D116b);
+
+	stdout.put(nl,"D116b es:$",ax);
+
+	stdout.put("	D18b es: $",cl);
+
+	mov($00000000,edx);
+
+	div(D116b);
+
+	stdout.put(" Sin signo D116b/D18b es: $",ax,nl);
+
+//Division "idiv" con signo de 16/8 bits
+
+	mov(ebx,eax);
+
+	mov($00000000,edx);
+
+	idiv(D116b);
+
+	stdout.put("		Con signo D116b/D18b es: $",ax,nl);
+
+//Division "div" sin signo de 32/16 bits
+
+	
+			
+	stdout.put(nl,"Division de 32/) bits",nl);						//_P561 3 de 4
+
+	stdout.put(nl,"Ingresar D132b (32 bits) hex entre 00000000 y FFFFFFFF: ");
+
+	stdin.get(ebx);
+
+	stdout.put("Ingresar D116b dato 16 bits hexadecimal entre 0000 y FFFF: ");
+
+	stdin.get(ecx);
+
+	mov(ebx,eax);
+
+	mov(ecx,D232b);
+
+	stdout.put(nl,"D132b es: $",eax);
+
+	stdout.put("	D16b es: $",cx);
+
+	mov($00000000,edx);
+
+	div(D232b);
+
+	stdout.put("	Sin signo D132b/D116b es: $",eax,nl);
+
+//Division "idiv" con signo de 32/16 bits
+
+	mov(ebx,eax);
+
+	mov($00000000,edx);
+
+	idiv(D232b);
+
+	
+
+
+		stdout.put("				Con Signo D132b/D116b es: $",eax,nl);		//_P561 4 de 4
+
+end P561;

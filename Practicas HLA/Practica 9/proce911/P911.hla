@@ -1,0 +1,81 @@
+//#*****************************************************************				//_P911 1 de 3
+
+//#	EJERCICIO P911.
+
+//#
+
+//#	Saltos incondicionales con "jmp"
+
+//#*****************************************************************
+
+Program P911;
+
+#include("stdlib.hhf");
+
+begin P911;
+
+//Salto incondicional.
+
+	stdout.put(nl,"El primer salto y el valor es : Uno",nl);
+
+	jmp Dos;
+
+Diez:
+
+	stdout.put(nl,"El decimo y ultimo salto, el valor es: Diez",nl);
+
+	jmp Once;
+
+Nueve:
+
+	stdout.put(nl,"El noveno salto y el valor es: Nueve",nl);
+
+
+
+	jmp Diez;										//_P911 2 de 3
+
+Tres:
+
+	stdout.put(nl,"El tercer salto y el valor es: Tres",nl);
+
+	jmp Cuatro;
+
+Ocho:
+
+	stdout.put(nl,"El octavo salto y el valor es: Ocho", nl);
+
+	jmp Nueve;
+
+Seis:
+
+	stdout.put(nl,"El sexto salto y el valor es: Seis",nl);
+
+	jmp Siete;
+
+Cinco:
+
+	stdout.put(nl,"El quinto salto y el valor es: Cinco",nl);
+
+	jmp Seis;
+
+Cuatro:
+
+	stdout.put(nl,"El cuarto salto y el calor es: Cuatro", nl);
+
+	jmp Cinco;
+
+Siete:												//_P911 3 de 3
+
+	stdout.put(nl,"El septimo salto y el valor es: Siete",nl);
+
+	jmp Ocho;
+
+Dos:
+
+	stdout.put(nl,"El segundo salto y el valor es: Dos",nl);
+
+	jmp Tres;
+
+Once:
+
+end P911;

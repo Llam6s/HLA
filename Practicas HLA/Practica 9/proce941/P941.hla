@@ -1,0 +1,56 @@
+//#*****************************************************************				//_P931 1 de 2
+
+//#	PARTE No P941.
+
+//#
+
+//#	Programa con subrutina
+
+//#*****************************************************************
+
+Program P941;
+
+#include("stdlib.hhf");
+
+//Subrutina "Sub1"
+
+procedure Sub1;
+
+static
+
+	VariableLocal:		int8;
+
+begin Sub1;
+
+	stdout.put(nl,"Programa con subrutina",nl);
+
+	mov($41,VariableLocal);
+
+	mov(VariableLocal,al);
+
+	stdout.put(nl,"VariableLocal = $",al,nl);
+
+
+
+end Sub1;											//_P941 2 de 2
+
+// Programa principal
+
+static
+
+	VariableGlobal:		int8;
+
+
+begin P941;
+
+	stdout.put(nl,"Programa sin subrutina",nl);
+
+	mov($40,VariableGlobal);
+
+	mov(VariableGlobal,al);
+
+	stdout.put(nl,"VariableGlobal=$",al,nl);
+
+	call Sub1;
+
+end P941;

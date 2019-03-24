@@ -1,0 +1,945 @@
+//#*****************************************************************			//_P741	1 de 2
+
+//#	PARTE No P741.
+
+//#
+
+//#	Direccionamiento Indirecto de Registro
+
+//#*****************************************************************
+
+Program P741;
+
+#include("stdlib.hhf");
+
+//NOTA:
+
+//LAS VARIABLES DE LAS TABLAS DE DATOS SE UTILIZAN EN LAS SIGUIENTES // SECCIONES:
+
+//PARTE No P731 DIRECCIONAMIENTO DIRECTO.
+
+//PARTE No P741 DIRECCIONAMIENTO INDIRECTO DE REGISTRO
+
+//PARTE No P751 DIRECCIONAMIENTO DE REGISTRO RELATIVO
+
+//PARTE No P761 DIRECCIONAMIENTO ÍNDICE
+
+//PARTE No P771 DIRECCIONAMIENTO BASE MÁS ÍNDICE
+
+//PARTE No P781 DIRECCIONAMIENTO BASE RELATIVA MÁS ÍNDICE
+
+//PARTE No P791 DIRECCIONAMIENTO ÍNDICE ESCALADO
+
+
+
+//LO SEÑALADO EN EL SIGUIENTE CUADO DEBE PONERLO EN LO INDICADO EN CADA SECCION.
+
+static
+
+	M8b0:	int8;
+
+	M8b1:	int8;
+
+	M8b2:	int8;
+
+	M8b3:	int8;
+
+	M8b4:	int8;
+
+	M8b5:	int8;
+
+	M8b6:	int8;
+
+	M8b7:	int8;
+
+	M8b8:	int8;
+
+	M8b9:	int8;
+
+	M8bA:	int8;
+
+	M8bB:	int8;
+
+	M8bC:	int8;
+
+	M8bD:	int8;
+
+
+
+	M8bE:	int8;
+	
+	M8bF:	int8;
+
+	M16b0:	int16;
+
+	M16b1:	int16;
+
+	M16b2:	int16;
+
+	M16b3:	int16;
+
+	M16b4:	int16;
+
+	M16b5:	int16;
+
+	M16b6:	int16;
+
+	M16b7:	int16;
+
+	M16b8:	int16;
+
+	M16b9:	int16;
+
+	M16bA:	int16;
+	
+	M16bB:	int16;
+
+	M16bC:	int16;
+	
+	M16bD:	int16;
+
+
+
+
+	M16bE:	int16;
+
+	M16bF:	int16;
+
+	M32b0:	int32;		
+
+	M32b1:	int32;
+
+	M32b2:	int32;
+
+	M32b3:	int32;
+
+	M32b4:	int32;
+
+	M32b5:	int32;
+
+	M32b6:	int32;
+
+	M32b7:	int32;
+
+	M32b8:	int32;
+
+	M32b9:	int32;
+
+	M32bA:	int32;
+
+	M32bB:	int32;
+
+	M32bC:	int32;
+
+	M32bD:	int32;
+
+
+
+	
+	M32bE:	int32;
+
+	M32bF:	int32;
+
+begin P741;
+
+//NOTA:
+
+//LAS TABLAS DE DATOS SE UTILIZAN EN LAS SIGUIENTES SECCIONES:
+
+//PARTE No P731 DIRECCIONAMIENTO DIRECTO.
+
+//PARTE No P741 DIRECCIONAMIENTO INDIRECTO DE REGISTRO
+
+//PARTE No P751 DIRECCIONAMIENTO DE REGISTRO RELATIVO
+
+//PARTE No P761 DIRECCIONAMIENTO ÍNDICE
+
+//PARTE No P771 DIRECCIONAMIENTO BASE MÁS ÍNDICE
+
+//PARTE No P781 DIRECCIONAMIENTO BASE RELATIVA MÁS ÍNDICE
+
+//PARTE No P791 DIRECCIONAMIENTO ÍNDICE ESCALADO
+
+//LO SEÑALADO EN EL SIGUEINTE CUADRO DEBE PONERLO EN LO INDICADO EN CADA SECCIÓN
+
+	//PONER TABLAS DE DATOS
+
+		stdout.put(nl,nl,"TABLAS DE DATOS EN MEMORIA",nl);
+
+	//Cargar la tabla de ocho bits
+
+
+
+		stdout.put(nl,nl"TABLA DE 8 BITS",nl);
+
+	//Dirección:	M8b0	Dato:$40
+
+	//Dirección:	M8b1	Dato:$41
+
+	//Dirección:	M8b2	Dato:$42	
+	
+	//Dirección:	M8b3	Dato:$43	
+	
+	//Dirección:	M8b4	Dato:$44	
+	
+	//Dirección:	M8b5	Dato:$45	
+	
+	//Dirección:	M8b6	Dato:$46	
+
+	//Dirección:	M8b7	Dato:$47	
+	
+	//Dirección:	M8b8	Dato:$48	
+	
+	//Dirección:	M8b9	Dato:$49	
+	
+	//Dirección:	M8bA	Dato:$4A	
+	
+	//Dirección:	M8bB	Dato:$4B
+	
+	//Dirección:	M8bC	Dato:$4C	
+	
+	//Dirección:	M8bD	Dato:$4D
+	
+	//Dirección:	M8bE	Dato:$4E
+	
+
+
+
+	//Dirección:	M8bF	Dato:$4F
+
+	mov($40,al);
+
+	mov(al,M8b0);
+
+	mov(&M8b0,ebx);
+
+	stdout.put(nl,"La direccion de M8b0 es: $",ebx);
+
+	mov(M8b0,al);
+
+	stdout.put(",El dato almacenado es: $",al,nl);
+
+	mov($41,al);
+
+	mov(al,M8b1);
+
+	mov(&M8b1,ebx);
+
+	stdout.put(nl,"La direccion de M8b1 es: $",ebx);
+
+	mov(M8b1,al);
+
+	stdout.put(",Eldato almacenado es: $",al,nl);
+
+	mov($42,al);
+	
+	mov(al,M8b2);
+
+	mov(&M8b2,ebx);
+
+	
+		
+	stdout.put(nl,"La direccion de M8b2 es: $",ebx);
+
+	mov(M8b2,al);
+
+	stdout.put(",Eldato almacenado es: $",al,nl);
+
+	mov($43,al);
+
+	mov(al,M8b3);
+
+	mov(&M8b3,ebx);
+
+	stdout.put(nl,"La direccion de M8b3 es: $",ebx);
+
+	mov(M8b3,al);
+
+	stdout.put(",Eldato almacenado es: $",al,nl);
+
+	mov($44,al);
+
+	mov(al,M8b4);
+
+	mov(&M8b4,ebx);
+
+	stdout.put(nl,"La direccion de M8b4 es: $",ebx);
+
+	mov(M8b4,al);
+
+	stdout.put(",Eldato almacenado es: $",al,nl);
+
+	mov($45,al);
+
+
+
+			
+	mov(al,M8b5);
+	
+	mov(&M8b5,ebx);
+
+	stdout.put(nl,"La direccion de M8b5 es: $",ebx);
+
+	mov(M8b5,al);
+
+	stdout.put(",Eldato almacenado es: $",al,nl);
+
+	mov($46,al);
+
+	mov(al,M8b6);
+
+	mov(&M8b6,ebx);
+
+	stdout.put(nl,"La direccion de M8b6 es: $",ebx);
+
+	mov(M8b6,al);
+
+	stdout.put(",Eldato almacenado es: $",al,nl);
+
+	mov($47,al);
+
+	mov(al,M8b7);
+
+	mov(&M8b7,ebx);
+
+	stdout.put(nl,"La direccion de M8b7 es: $",ebx);
+
+	mov(M8b7,al);
+
+
+
+	stdout.put(",Eldato almacenado es: $",al,nl);
+
+	mov($48,al);
+
+	mov(al,M8b8);
+
+	mov(&M8b8,ebx);
+
+	stdout.put(nl,"La direccion de M8b8 es: $",ebx);
+
+	mov(M8b8,al);
+
+	stdout.put(",Eldato almacenado es: $",al,nl);
+
+	mov($49,al);
+
+	mov(al,M8b9);
+
+	mov(&M8b9,ebx);
+
+	stdout.put(nl,"La direccion de M8b9 es: $",ebx);
+
+	mov(M8b9,al);
+
+	stdout.put(",Eldato almacenado es: $",al,nl);
+
+	mov($4A,al);
+
+	mov(al,M8bA);
+
+	mov(&M8bA,ebx);
+
+
+
+	stdout.put(nl,"La direccion de M8bA es: $",ebx);
+
+	mov(M8bA,al);
+
+	stdout.put(",Eldato almacenado es: $",al,nl);
+
+	mov($4B,al);
+
+	mov(al,M8bB);
+
+	mov(&M8bB,ebx);
+
+	stdout.put(nl,"La direccion de M8bB es: $",ebx);
+
+	mov(M8bB,al);
+
+	stdout.put(",Eldato almacenado es: $",al,nl);
+
+	mov($4C,al);
+	
+	mov(al,M8bC);
+
+	mov(&M8bC,ebx);
+
+	stdout.put(nl,"La direccion de M8bC es: $",ebx);
+
+	mov(M8bC,al);
+
+	stdout.put(",Eldato almacenado es: $",al,nl);
+
+	mov($4D,al);
+
+	mov(al,M8bD);
+
+
+
+
+	mov(&M8bD,ebx);	
+
+	stdout.put(nl,"La direccion de M8bD es: $",ebx);
+
+	mov(M8bD,al);
+
+	stdout.put(",Eldato almacenado es: $",al,nl);
+
+	mov($4E,al);
+
+	mov(al,M8bE);
+
+	mov(&M8bE,ebx);
+
+	stdout.put(nl,"La direccion de M8b1 es: $",ebx);
+
+	mov(M8bE,al);
+
+	stdout.put(",Eldato almacenado es: $",al,nl);
+
+	mov($4F,al);
+
+	mov(al,M8bF);
+
+	mov(&M8bF,ebx);
+
+	stdout.put(nl,"La direccion de M8bF es: $",ebx);
+
+	mov(M8bF,al);
+
+	stdout.put(",Eldato almacenado es: $",al,nl);
+
+//Cargar la tabla de dies y seis bits
+
+
+		stdout.put(nl,nl"TABLA DE 16 BITS",nl);
+
+	//Dirección:	M16b0	Dato:$0040
+
+	//Dirección:	M16b1	Dato:$0041
+
+	//Dirección:	M16b2	Dato:$0042	
+	
+	//Dirección:	M16b3	Dato:$0043	
+	
+	//Dirección:	M16b4	Dato:$0044	
+	
+	//Dirección:	M16b5	Dato:$0045	
+	
+	//Dirección:	M16b6	Dato:$0046	
+
+	//Dirección:	M16b7	Dato:$0047	
+	
+	//Dirección:	M16b8	Dato:$0048	
+	
+	//Dirección:	M16b9	Dato:$0049	
+	
+	//Dirección:	M16bA	Dato:$004A	
+	
+	//Dirección:	M16bB	Dato:$004B
+	
+	//Dirección:	M16bC	Dato:$004C	
+	
+	
+
+	//Dirección:	M16bD	Dato:$004D
+	
+	//Dirección:	M16bE	Dato:$004E
+	
+	//Dirección:	M16bF	Dato:$004F
+
+	mov($0040,ax);
+
+	mov(ax,M16b0);
+
+	mov(&M16b0,ebx);
+
+	stdout.put(nl,"La direccion de M16b0 es: $",ebx);
+
+	mov(M16b0,ax);
+
+	stdout.put(",El dato almacenado es: $",ax,nl);
+
+	mov($0041,ax);
+
+	mov(ax,M16b1);
+
+	mov(&M16b1,ebx);
+
+	stdout.put(nl,"La direccion de M16b1 es: $",ebx);
+
+	mov(M16b1,ax);
+
+	stdout.put(",Eldato almacenado es: $",ax,nl);
+
+	mov($0042,ax);
+
+
+
+	
+	mov(ax,M16b2);
+
+	mov(&M16b2,ebx);
+
+	
+
+	stdout.put(nl,"La direccion de M16b2 es: $",ebx);
+
+	mov(M16b2,ax);
+
+	stdout.put(",Eldato almacenado es: $",ax,nl);
+
+	mov($0043,ax);
+
+	mov(ax,M16b3);
+
+	mov(&M16b3,ebx);
+
+	stdout.put(nl,"La direccion de M16b3 es: $",ebx);
+
+	mov(M16b3,ax);
+
+	stdout.put(",Eldato almacenado es: $",ax,nl);
+
+	mov($0044,ax);
+
+	mov(ax,M16b4);
+
+	mov(&M16b4,ebx);
+
+	stdout.put(nl,"La direccion de M16b4 es: $",ebx);
+
+	mov(M16b4,ax);
+
+
+
+	stdout.put(",Eldato almacenado es: $",ax,nl);
+
+	mov($0045,ax);
+
+	mov(ax,M16b5);
+
+	mov(&M16b5,ebx);
+
+	stdout.put(nl,"La direccion de M16b5 es: $",ebx);
+
+	mov(M16b5,ax);
+
+	stdout.put(",Eldato almacenado es: $",ax,nl);
+
+	mov($0046,ax);
+
+	mov(ax,M16b6);
+
+	mov(&M16b6,ebx);
+
+	stdout.put(nl,"La direccion de M16b6 es: $",ebx);
+
+	mov(M16b6,ax);
+
+	stdout.put(",Eldato almacenado es: $",ax,nl);
+
+	mov($0047,ax);
+
+	mov(ax,M16b7);
+
+	mov(&M16b7,ebx);
+
+
+
+	stdout.put(nl,"La direccion de M16b7 es: $",ebx);
+
+	mov(M16b7,ax);
+
+	stdout.put(",Eldato almacenado es: $",ax,nl);
+
+	mov($0048,ax);
+
+	mov(ax,M16b8);
+
+	mov(&M16b8,ebx);
+
+	stdout.put(nl,"La direccion de M16b8 es: $",ebx);
+
+	mov(M16b8,ax);
+
+	stdout.put(",Eldato almacenado es: $",ax,nl);
+
+	mov($0049,ax);
+
+	mov(ax,M16b9);
+
+	mov(&M16b9,ebx);
+
+	stdout.put(nl,"La direccion de M16b9 es: $",ebx);
+
+	mov(M16b9,ax);
+
+	stdout.put(",Eldato almacenado es: $",ax,nl);
+
+	mov($004A,ax);
+
+
+
+
+	mov(ax,M16bA);
+
+	mov(&M16bA,ebx);
+
+
+
+	stdout.put(nl,"La direccion de M16bA es: $",ebx);
+
+	mov(M16bA,ax);
+
+	stdout.put(",Eldato almacenado es: $",ax,nl);
+
+	mov($004B,ax);
+
+	mov(ax,M16bB);
+
+	mov(&M16bB,ebx);
+
+	stdout.put(nl,"La direccion de M16bB es: $",ebx);
+
+	mov(M16bB,ax);
+
+	stdout.put(",Eldato almacenado es: $",ax,nl);
+
+	mov($004C,ax);
+	
+	mov(ax,M16bC);
+
+	mov(&M16bC,ebx);
+
+	stdout.put(nl,"La direccion de M16bC es: $",ebx);
+
+	mov(M16bC,ax);
+
+
+
+
+	stdout.put(",Eldato almacenado es: $",ax,nl);
+
+	mov($004D,ax);
+
+	mov(ax,M16bD);
+
+	mov(&M16bD,ebx);
+
+	stdout.put(nl,"La direccion de M16bD es: $",ebx);
+
+	mov(M16bD,ax);
+
+	stdout.put(",Eldato almacenado es: $",ax,nl);
+
+	mov($004E,ax);
+
+	mov(ax,M16bE);
+
+	mov(&M16bE,ebx);
+
+	stdout.put(nl,"La direccion de M16bE es: $",ebx);
+
+	mov(M16bE,ax);
+
+	stdout.put(",Eldato almacenado es: $",ax,nl);
+
+	mov($004F,ax);
+
+	mov(ax,M16bF);
+
+	mov(&M16bF,ebx);
+
+
+
+
+	stdout.put(nl,"La direccion de M16bF es: $",ebx);
+
+	mov(M16bF,ax);
+
+	stdout.put(",Eldato almacenado es: $",ax,nl);
+
+
+//Cargar la tabla de treinta y dos, bits
+
+		stdout.put(nl,nl"TABLA DE 32 BITS",nl);
+
+	//Dirección:	M32b0	Dato:$00000040
+
+	//Dirección:	M32b1	Dato:$00000041
+
+	//Dirección:	M32b2	Dato:$00000042	
+	
+	//Dirección:	M32b3	Dato:$00000043	
+	
+	//Dirección:	M32b4	Dato:$00000044	
+	
+	//Dirección:	M32b5	Dato:$00000045	
+	
+	//Dirección:	M32b6	Dato:$00000046	
+
+	//Dirección:	M32b7	Dato:$00000047	
+	
+	//Dirección:	M32b8	Dato:$00000048	
+	
+	//Dirección:	M32b9	Dato:$00000049	
+	
+	//Dirección:	M32bA	Dato:$0000004A	
+
+
+	
+	//Dirección:	M32bB	Dato:$0000004B
+	
+	//Dirección:	M32bC	Dato:$0000004C
+
+	//Dirección:	M32bD	Dato:$0000004D			
+	
+	//Dirección:	M32bE	Dato:$0000004E
+	
+	//Dirección:	M32bF	Dato:$0000004F
+
+	mov($00000040,eax);
+
+	mov(eax,M32b0);
+
+	mov(&M32b0,ebx);
+
+	stdout.put(nl,"La direccion de M32b0 es: $",ebx);
+
+	mov(M32b0,eax);
+
+	stdout.put(",El dato eaxmacenado es: $",eax,nl);
+
+	mov($00000041,eax);
+
+	mov(eax,M32b1);
+
+	mov(&M32b1,ebx);
+
+	stdout.put(nl,"La direccion de M32b1 es: $",ebx);
+
+	mov(M32b1,eax);
+
+	stdout.put(",Eldato almacenado es: $",eax,nl);
+
+	mov($00000042,eax);
+
+	mov(eax,M32b2);	
+
+	mov(&M32b2,ebx);
+
+	stdout.put(nl,"La direccion de M32b2 es: $",ebx);
+
+	mov(M32b2,eax);
+
+	stdout.put(",Eldato almacenado es: $",eax,nl);
+
+	mov($00000043,eax);
+
+	mov(eax,M32b3);
+
+	mov(&M32b3,ebx);
+
+	stdout.put(nl,"La direccion de M32b3 es: $",ebx);
+
+	mov(M32b3,eax);
+
+	stdout.put(",Eldato almacenado es: $",eax,nl);
+
+	mov($00000044,eax);
+
+	mov(eax,M32b4);
+
+	mov(&M32b4,ebx);
+
+
+
+
+	stdout.put(nl,"La direccion de M32b4 es: $",ebx);
+
+	mov(M32b4,eax);
+
+	stdout.put(",Eldato almacenado es: $",eax,nl);
+
+	mov($00000045,eax);
+
+	mov(eax,M32b5);
+
+	mov(&M32b5,ebx);
+
+	stdout.put(nl,"La direccion de M32b5 es: $",ebx);
+
+	mov(M32b5,eax);
+
+	stdout.put(",Eldato almacenado es: $",eax,nl);
+
+	mov($00000046,eax);
+
+	mov(eax,M32b6);
+
+	mov(&M32b6,ebx);
+
+	stdout.put(nl,"La direccion de M32b6 es: $",ebx);
+
+	mov(M32b6,eax);
+
+	stdout.put(",Eldato almacenado es: $",eax,nl);
+
+	mov($00000047,eax);
+
+
+
+
+	mov(eax,M32b7);
+
+	mov(&M32b7,ebx);
+
+	stdout.put(nl,"La direccion de M32b7 es: $",ebx);
+
+	mov(M32b7,eax);
+
+	stdout.put(",Eldato almacenado es: $",eax,nl);
+
+	mov($00000048,eax);
+
+	mov(eax,M32b8);
+
+	mov(&M32b8,ebx);
+
+	stdout.put(nl,"La direccion de M32b8 es: $",ebx);
+
+	mov(M32b8,eax);
+
+	stdout.put(",Eldato almacenado es: $",eax,nl);
+
+	mov($00000049,eax);
+
+	mov(eax,M32b9);
+
+	mov(&M32b9,ebx);
+
+	stdout.put(nl,"La direccion de M32b9 es: $",ebx);
+
+	mov(M32b9,eax);
+
+
+
+	stdout.put(",Eldato almacenado es: $",eax,nl);
+
+	mov($0000004A,eax);
+
+	mov(eax,M32bA);							
+
+	mov(&M32bA,ebx);
+
+	stdout.put(nl,"La direccion de M32bA es: $",ebx);	
+
+	mov(M32bA,eax);
+
+	stdout.put(",Eldato almacenado es: $",eax,nl);
+
+	mov($0000004B,eax);
+
+	mov(eax,M32bB);
+
+	mov(&M32bB,ebx);
+
+	stdout.put(nl,"La direccion de M32bB es: $",ebx);
+
+	mov(M32bB,eax);
+
+	stdout.put(",Eldato almacenado es: $",eax,nl);
+
+	mov($0000004C,eax);
+	
+	mov(eax,M32bC);
+
+	mov(&M32bC,ebx);
+
+
+
+	stdout.put(nl,"La direccion de M32bC es: $",ebx);
+
+	mov(M32bC,eax);
+
+	stdout.put(",Eldato almacenado es: $",eax,nl);
+
+	mov($0000004D,eax);
+
+	mov(eax,M32bD);
+
+	mov(&M32bD,ebx);
+
+	stdout.put(nl,"La direccion de M32bD es: $",ebx);
+
+	mov(M32bD,eax);
+
+	stdout.put(",Eldato almacenado es: $",eax,nl);
+
+	mov($0000004E,eax);
+
+	mov(eax,M32bE);
+
+	mov(&M32bE,ebx);
+
+	stdout.put(nl,"La direccion de M32b1 es: $",ebx);
+
+	mov(M32bE,eax);
+
+	stdout.put(",Eldato almacenado es: $",eax,nl);
+
+	mov($0000004F,eax);
+
+
+
+	mov(eax,M32bF);
+
+	mov(&M32bF,ebx);
+
+	stdout.put(nl,"La direccion de M32bF es: $",ebx);
+
+	mov(M32bF,eax);
+
+	stdout.put(",Eldato almacenado es: $",eax,nl);
+
+
+//Direccionamiento INDIRECTO DE REGISTRO
+
+	stdout.put(nl,nl,"Direccionamiento INDIRECTO DE REGISTRO",nl);
+
+//Direccionamiento INDIRECTO DE DIRECTO a ocho bits
+
+	mov(&M8b5,ebx);
+
+
+	
+	mov([ebx],al);									//_P741 2 de 2
+
+	stdout.put(nl,"Eldato en EBX es: M8b5	mov([ebx],al)");
+	
+	stdout.put("	El dato en AL es: $",al,nl);
+
+//Direccionamiento INDIRECTO DE REGISTRO a diez y seis, bit
+
+	mov(&M16b0,ebx);
+
+	mov([ebx],ax);
+
+	stdout.put(nl,"Eldato en EBX es: M16b0	mov([ebx],ax)");
+	
+	stdout.put("	El dato en AX es: $",ax,nl);
+
+//Direccionamiento INDIRECTO DE REGISTRO a treinta y dos, bits
+
+	mov(&M32bF,ebx);
+
+	mov([ebx],eax);
+
+	stdout.put(nl,"Eldato en EBX es: M32bF	mov([ebx],eax)");
+	
+	stdout.put("	El dato en EAX es: $",eax,nl);
+
+end P741;

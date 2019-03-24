@@ -1,0 +1,51 @@
+//#*****************************************************************	//_P721	1 de 2
+
+//#	PARTE No P721.
+
+//#
+
+//#	Direccionamiento de Registro
+
+//#*****************************************************************
+
+Program P721;
+
+#include("stdlib.hhf");
+
+begin P721;
+	
+//Direccionamiento de REGISTRO
+
+	stdout.put(nl,nl,"Direccionamiento de REGISTRO",nl);
+
+//Direccionamiento de REGISTRO a ocho bits
+
+	mov($40,bl);
+
+	mov(bl,al);
+
+	stdout.put(nl,"El valor de BL es: $40	mov(bl,al)");
+
+	stdout.put("	Valor de AL es: $",al,nl);
+
+//Direccionamiento de REGISTRO a diez y seis, bits
+
+	mov($0040,bx);							//_P721 2 de 2
+
+	mov(bx,ax);
+
+	stdout.put(nl,"El valor de BX es: $0040 	mov(bx,ax)");		
+
+	stdout.put("	Valor de AX es: $",ax,nl);
+
+//Direccionamiento de Registro a treinta y dos, bits
+
+	mov($00000040,ebx);
+
+	mov(ebx,eax);
+
+	stdout.put(nl,"El valor de EBX es: $00000040 mov(ebx,eax)");
+
+	stdout.put("	Valor de EAX es: $",eax,nl);
+
+end P721;

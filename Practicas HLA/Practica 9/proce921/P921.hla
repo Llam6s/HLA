@@ -1,0 +1,202 @@
+//#*****************************************************************				//_P921 1 de 3
+
+//#	PARTE No P921
+
+//#
+
+//#	Saltos condicionales con las banderas "Carry" "C", "Signo""S"
+
+//#	"Overflow" "O","Zero""Z"
+
+//#*****************************************************************
+
+Program P921;
+
+#include("stdlib.hhf");
+
+static
+
+	D116b:	int16;
+
+	D216b:	int16;
+
+// Ejemplo:
+
+//		Datos:					Banderas:
+
+//	D116b:		-	216b:	Resultado:    C    Z    S    O
+
+//	0001		-	0002	= FFFF(-1)    1    0    1    0
+
+//	0002		-	0001	= 0001	      0    0    0    0
+
+
+
+
+//	0001		-	0001	= 0000	      0    1    0    0				//_P921 2 de 6
+
+// 	FFFF(-1)	-      FFFF(-2) = 0001        0    0    0    0
+
+//	FFFE(-2)	-      FFFF(-1) = FFFF(-1)    1    0    1    0
+
+//	8000(-32768)	-	0001	= 7FFF	      0    0    0    1
+
+//	7FFF(32767)	-	FFFF(-1)= 8000	      1    0    1    1
+
+
+begin P921;
+
+//Instrucción compare "cmp" de dos cantidades de 16 bits y afecta las banderas Z,S,O,C
+
+	stdout.put(nl, nl,"Compara dos numeros de 16 bits D116b-D216b",nl);
+
+	stdout.put(nl,"Ingresar D116b dato 16 bits hexadecimal entre 0000 y FFFF: ");
+
+	stdin.get(ax);
+
+	stdout.put("Ingresar D216b dato 16 bits hexadecimal entre 0000 y FFFF: ");
+
+	stdin.get(bx);
+
+//Para visualizar las banderas del EFLAGS: Z,S,O,C
+
+//Visualiza a la bandera de Zero "Z"
+
+	cmp(ax, bx);
+
+	if(@z) then
+
+	
+
+			stdout.put("Zero=1",nl);						//_P921 3 de 6
+
+		else
+
+			stdout.put("Zero=0",nl);
+
+	endif;
+
+//Visualiza la bandera de Signo "S"
+
+	cmp(ax,bx);
+
+	if(@s)then
+
+			stdout.put("Signo = 1",nl);
+
+		else
+
+			stdout.put("Signo = 0",nl);
+
+	endif;
+
+//Visualiza la bandera de Carry "C"
+
+	cmp(ax,bx);
+
+	if(@c) then
+
+			stdout.put("Carry = 1",nl);
+
+	else
+
+			stdout.put("Carry = 0",nl);						//_P921 4 de 6
+
+	endif;
+
+//Visualiza la bandera de Overflow "O"
+
+	cmp(ax,bx);
+
+	if(@O) then
+
+			stdout.put("Overflow = 1",nl);
+
+		else
+
+			stdout.put("Overflow = 0",nl);
+
+	endif;
+
+//Bringa sí una bandera se activo
+
+	cmp(ax,bx);
+
+	JC	Carry;		//Brinca si se activo el Carry
+
+	cmp(ax,bx);
+
+	JS	Signo;		//Brinca sí se activo el Signo
+
+	cmp(ax,bx);
+
+	JO	Overflow;	//Brinca sí se activo el Overflow
+
+
+
+
+	cmp(ax,bx);										//_P921 5 de 6
+
+	JZ	ZERO;		//Brinca sí se activo el Zero
+
+//No se activo ninguna bandera
+
+
+	stdout.put(nl,"No se activo ninguna bandera", nl);
+
+	jmp Fin;
+
+//Se activo la bandera del "Carry"
+
+Carry:
+
+	stdout.put(nl,"Se activo la bandera del Carry",nl);
+
+//Saltar sí no se activo la bandera del "Signo" "S"
+
+	cmp(ax,bx);
+
+	JNS	NoSigno;
+
+//Se activo la bandera del "Signo"
+
+Signo:
+
+	stdout.put(nl,"Se activo la bandera del Signo",nl);
+
+NoSigno:
+
+//Salta si no se activo la bandera del "Overflow" "O"
+
+
+
+	cmp(ax,bx);										//_P921 6 de 6
+
+	JNO	NoOverflow;
+
+//Se activo la bandera del "Overflow"
+
+Overflow:
+
+	stdout.put(nl,"Se activo la bandera del Overflow",nl);
+
+NoOverflow:
+
+//Saltar sí no se activo la bandera de "Zero" "Z"
+
+	cmp(ax,bx);
+
+	JNZ	Fin;
+
+//Se activo la bandera del "Zero"
+
+ZERO:
+
+	stdout.put(nl,"Se activo la bandera del Zero",nl);
+
+Fin:
+
+end P921;
+
+	
+
